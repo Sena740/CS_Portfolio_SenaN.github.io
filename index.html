@@ -3,17 +3,21 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible"-content="IE=chrome" />
         <meta name="viewport" content ="width=device-width, initial-scale=1.0">
-        
+        <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="A_Style.css">
-
+        <!-- pyscript -->
         <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/core.css">
         <script type="module" src="https://pyscript.net/releases/2024.10.1/core.js"></script>
-
+        <!-- icons -->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-        
+        <!-- code syntax highlighter-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+        <script>hljs.highlightAll();</script>
         <title>CS Portfolio</title>
     </head>
 
@@ -37,47 +41,90 @@
             <nav>
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#project">Projects</a>
+                    <li><a href="#mainp">Project</a></li>
+                    <li><a href="#project">More</a>
                         <ul class="sub">
                             <li><a href="Projects_Home.html#project" target="_blank">Coding</a></li>
                             <li><a href="Projects_Home.html#written" target="_blank">Written</a></li>
                         </ul></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </header>
-
-        <section id="home">
-            <div class ="top-header">
-                <h1>Home</h1>
+        <!-- Home -->
+        <section id="home" class="home">
+            <div class ="topheader">
+                <h1 class="title">WELCOME</h1>
+                <h2>Where all my projects resides</h2>
             </div>
         </section>
-        <section id="about">About</section>
+        <section id="mainp" class="mainp">
+            <div class="top-header" style="margin-bottom: 2em;">
+                <h1>Main Projects</h1>
+                <p class="description">Check out my ISP	&#40;Independent Study Project&#41; and the group project I was apart of!</p>
+            </div>
+            <button type="button" class="collapse">ISP</button>
+                <div class="content">
+                    <h3>Rock-Paper-Scissors Game</h3>
+                    <p class="yap">For my ISP, I wanted to touch on something I not yet learned, which was untilizing the computer camera. Through this 
+                            I learned how to use <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker/python?hl=en" target="_blank" style="color: #fff;">Media Pipe</a>, 
+                            which required me to use an older version of Python leading me to some problem I had 
+                            to solve. At the end I managed to create a hand gesture detector to be used in my simple Rock-Paper-Scissors Game.
+                    </p>
+                    <video width="700" muted controls>
+                        <source src="img/Demo.mp4" type="video/mp4">
+                    </video>
+                    <div class="dl-section">
+                        <a href="https://github.com/Sena740/ISP" target="_blank">
+                            <button type="button" class="dl">- Check Code Here -</button>
+                        </a>
+                    </div>
+                </div>
+
+            <button type="button" class="collapse">Group Project</button>
+                <div class="content">
+                    <h3>Tower Defence Game</h3>
+                    <p class="yap">For our group project, we dicided to create a tower defense game, using pre-existing designs from a game called 
+                        <a href="https://genshin.hoyoverse.com/en/" target="_blank" style="color: #fff;">Genshin Impact</a>. Using coding methods
+                        learned in class, and combining it with some tutorials here and there, my team &#40;Sena, Jayden, Jenny&#41; were able to create
+                        this game, but was not perfect. We were unable to fix an issue where placing more than one tower would cause an error with the 
+                        shooting system &#40;Check second video for more detail&#41;. Furthermore, I personally think we had our goals set too high since 
+                        we failed to complete simple tasks along the creation period. A good experience overall.
+                    </p>
+                    <video width="700" muted controls>
+                        <source src="img/GP.mp4" type="video/mp4">
+                    </video>
+                    <video width="700" muted controls>
+                        <source src="img/GP_error.mp4" type="video/mp4">
+                    </video>
+                    <div class="dl-section">
+                        <a href="https://github.com/ICSSJJ/GenshinTD/tree/main/FinalTD" target="_blank">
+                            <button type="button" class="dl">- Check Code Here -</button>
+                        </a>
+                    </div>
+                </div>
+        </section>
+
         <!-- projects -->
         <section id="project">
             <div class ="top-header">
-                <h1>My Projects</h1>
+                <h1>More Projects</h1>
             </div>
             <div class ="container">
                 <a href="Projects_Home.html#project" class ="box" target="_blank">
                     <i class="uil uil-monitor"></i>
                     <h3>Coding</h3>
-                    <label>Python projects completed over the past midterm</label>
+                    <label>Python projects completed over the past semester</label>
                 </a>
                 <a href="Projects_Home.html#written" class="box" target="_blank">
                     <i class="uil uil-edit"></i>
                     <h3>Written</h3>
-                    <label>Written assignments completed over the past midterm</label>
+                    <label>Written assignments completed over the past semester</label>
                 </a>
             </div>
         </section>
-
-        <section id="contact">contact</section>
-
         <!-- Credits -->
-        <footer>
-            <h3>Special Thanks</h3>
+        <footer style="text-align: center;">
+            <h3 ><a href="https://github.com/Sena740/CS_Portfolio_SenaN.github.io" target="_blank" style="color: #fff; ">Click Here for the Source Code of this Portfolio</a></h3>
         </footer>
 
         <script src="A_Script.js"></script>

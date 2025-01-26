@@ -72,11 +72,153 @@ nav a:hover,
 nav a.active {
     color: #028299;
 }
+/* Home section */
+h1{
+	position: relative;
+	font-size: 6em;
+	letter-spacing: 15px;
+	color: #028299;
+	text-transform: uppercase;
+	width: 100%;
+	text-align: center;
+	-webkit-box-reflect : below 1px linear-gradient(transparent , #0004);
+	line-height: 0.70em;
+	outline: none;
+	animation: animate 3s linear infinite;
+}
+.title{
+    font-size: 6em;
+}
+@keyframes animate{
+	0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%{
+		color: #028299;
+		text-shadow: none;
+	}
+	18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%{
+		color: #fff;
+		text-shadow: 0 0 10px #03bcf4,
+		            0 0 20px #03bcf4,
+		            0 0 40px #03bcf4,
+		            0 0 80px #03bcf4,
+		            0 0 160px #03bcf4;
 
-/* Project section */
+	}
+}
+
+h2{
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1.5em;
+    color: #028299;
+    animation: animate2 is ease-in-out infinite alternate;
+}
+
+@keyframes animate2{
+    from{
+        text-shadow: 0 0 20px #03bcf4;
+    }
+    to{
+        text-shadow: 0 0 30px #03bcf4, 0 0 10px #03bcf4;
+    }
+}
+
+
+/* Main Project section */
+p.description{
+    margin-top: 2em;
+}
+
+.collapse{
+    margin-top: 20px;
+    max-width: 800px;
+    background-color: #434857;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    align-items: center;
+}
+
+.active1, .collapse:hover {
+    background-color:  #028299;
+  }
+
+.collapse:after {
+    content: '⮟';
+    font-size: 15px;
+    color: #ffffff;
+    float: right;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.active1:after {
+    content: "⮟";
+    transform: rotate(180deg);
+  }
+
+.content {
+    max-width: 800px;
+    background-color: #434857;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width:100%;
+    box-shadow: 1px 8px 10px 2px #181a20;
+    justify-content: center;
+    text-align: center;
+}
+
+.dl{
+    max-width: 180px;
+    background-color: #434857;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    border-radius: 15px;
+    border-color: #028299;
+    border-style: dashed;
+    align-items: center;
+}
+
+.dl:hover{
+    background-color: #028299;
+}
+
+.dl-section{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+p.yap{
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-block: 2em;
+}
+
+.content h3{
+    margin-top: 1em;
+
+}
+
+/* More Project section */
 .top-header{
     text-align: center;
     margin-bottom: 5em;
+    
 }
 
 .top-header h1{
