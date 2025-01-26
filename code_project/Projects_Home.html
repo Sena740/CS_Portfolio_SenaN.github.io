@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"-content="IE=chrome" />
+        <meta name="viewport" content ="width=device-width, initial-scale=1.0">
+        <!-- font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="Projects_Style.css">
+        <!-- pyscript -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/core.css">
+        <script type="module" src="https://pyscript.net/releases/2024.10.1/core.js"></script>
+        <!-- icons -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <!-- code syntax highlighter-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+        <script>hljs.highlightAll();</script>
+
+        <title>CS Portfolio_Projects</title>
+    </head>
+
+    <body>
+        <!-- nav bar -->
+        <header>
+            <a href="index.html" class="name">Portfolio</a>
+            <nav>
+                <ul>
+                    <li><a href="#project">Projects</a>
+                        <ul class="sub">
+                            <li><a href="#Number-Guess">Number-Guess</a></li>
+                            <li><a href="#Student-info">Student-Info</a></li>
+                            <li><a href="#Recursion-turtle">Recursion-T</a></li>
+                            <li><a href="#Recursion-graphics">Recursion-G</a></li>
+                        </ul></li>
+                    <li><a href="#written">Written</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- projects -->
+        <section id="project">
+            <div class ="top-header">
+                <h1 style="margin-top: 5em;">My Projects</h1>
+            </div>
+            <section id="Number-Guess">
+                <h3>Number-Guessing-Game</h3>
+                <div class="main-container">
+                    <div class="code-container">
+                        <pre><code class="language-python">
+#Number Guessing Game
+#2024/09/18 By Sena Nishimura
+import random #importing random allows us to generate random numbers for this game
+
+def right(): #allows the user to replay or end the game when guessed correctly
+    print("You guessed correct!\nTry again? (Y/N)")
+    confirm = input()
+    if confirm == "y":
+        difficulty()
+    elif confirm == "n":
+        print("Thank you for playing!")
+
+def wrong(): #allows the user to replay or end the game when guessed incorrectly
+    print("You ran out of guesses!\nTry again? (Y/N)")
+    confirm = input()
+    if confirm == "y":
+        difficulty()
+    elif confirm == "n":
+        print("Thank you for playing!")
+
+#easy mode with a number range of 1 to 10, and 5 guesses
+def easy():
+    counter = int(5)
+    correct = 0
+    num = int(random.randrange(1,10)) #chooses a number within the range
+    print("Range is 1 to 10, you have",counter,"guesses left")
+    while(counter >= 1): #runs while the user has guesses remaining
+        guess = int(input())
+        if guess > num: #tells the user that the number they guessed were too high
+            counter = counter - 1
+            print("Too High!", counter, "guesses left")
+        elif guess < num: #tells the user that the number they guessed were too low
+            counter = counter - 1
+            print("Too Low!", counter, "guesses left")
+        elif guess == num:
+            counter = 0
+            correct = 1
+    if counter == 0: #wether right or wrong, allows the user to replay or quit the game
+        if correct == 1:
+            right()
+        if correct == 0:
+            wrong()
+
+#medium mode with a number range of 1 to 100, and 4 guesses
+def medium(): #works the same as the easy function, just different number range and guess count
+    counter = int(4)
+    correct = 0
+    num = int(random.randrange(1,100))
+    print("Range is 1 to 100, you have",counter,"guesses left")
+    while(counter >= 1):
+        guess = int(input())
+        if guess > num:
+            counter = counter - 1
+            print("Too High!", counter, "guesses left")
+        elif guess < num:
+            counter = counter - 1
+            print("Too Low!", counter, "guesses left")
+        elif guess == num:
+            counter = 0
+            correct = 1
+    if counter == 0:
+        if correct == 1:
+            right()
+        if correct == 0:
+            wrong()
+#hard mode with a number range of 1 to 1000, and 3 guesses
+def hard(): #works the same as the easy function, just different number range and guess count
+    counter = int(3)
+    correct = 0
+    num = int(random.randrange(1,1000))
+    print("Range is 1 to 1000, you have",counter,"guesses left")
+    while(counter >= 1):
+        guess = int(input())
+        if guess > num:
+            counter = counter - 1
+            print("Too High!", counter, "guesses left")
+        elif guess < num:
+            counter = counter - 1
+            print("Too Low!", counter, "guesses left")
+        elif guess == num:
+            counter = 0
+            correct = 1
+    if counter == 0:
+        if correct == 1:
+            right()
+        if correct == 0:
+            wrong()
+
+def difficulty(): #allows the user to select the difficulty for this game
+    print("Please select the difficulty: \n| Easy | Medium | Hard |") #asks the user to choose an difficulty
+    dif = input()
+    if dif == "easy": #initiate the easy function when the user types easy
+        easy()
+    elif dif == "medium": #initiate the medium function when the user types medium
+        medium()
+    elif dif == "hard": #initiate the hard function when the user types hard
+        hard()
+    else:
+        print("Invalid option") #typing anything other tha three options prompts the selection again
+        difficulty()
+
+difficulty()
+                        </code></pre>
+                    </div>
+                    
+                    <div class="gallery-container">
+                        <div class="discription">
+                            <p>The purpose for this project was for us to learn how to work 
+                                with the random system and implementing it with user input</p>
+                        </div>
+                        <div class="gallery">
+                            <div><img src="img/Ran_num_1.png" alt=""></div>
+                            <div><img src="img/Ran_num_2.png" alt=""></div>
+                            <div><img src="img/Ran_num_3.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="collapse">Full Code</button>
+                <div class="content">
+                    <pre><code class="language-python">
+                        #Number Guessing Game
+                        #2024/09/18 By Sena Nishimura
+                        import random #importing random allows us to generate random numbers for this game
+                        
+                        def right(): #allows the user to replay or end the game when guessed correctly
+                            print("You guessed correct!\nTry again? (Y/N)")
+                            confirm = input()
+                            if confirm == "y":
+                                difficulty()
+                            elif confirm == "n":
+                                print("Thank you for playing!")
+                        
+                        def wrong(): #allows the user to replay or end the game when guessed incorrectly
+                            print("You ran out of guesses!\nTry again? (Y/N)")
+                            confirm = input()
+                            if confirm == "y":
+                                difficulty()
+                            elif confirm == "n":
+                                print("Thank you for playing!")
+                        
+                        #easy mode with a number range of 1 to 10, and 5 guesses
+                        def easy():
+                            counter = int(5)
+                            correct = 0
+                            num = int(random.randrange(1,10)) #chooses a number within the range
+                            print("Range is 1 to 10, you have",counter,"guesses left")
+                            while(counter >= 1): #runs while the user has guesses remaining
+                                guess = int(input())
+                                if guess > num: #tells the user that the number they guessed were too high
+                                    counter = counter - 1
+                                    print("Too High!", counter, "guesses left")
+                                elif guess < num: #tells the user that the number they guessed were too low
+                                    counter = counter - 1
+                                    print("Too Low!", counter, "guesses left")
+                                elif guess == num:
+                                    counter = 0
+                                    correct = 1
+                            if counter == 0: #wether right or wrong, allows the user to replay or quit the game
+                                if correct == 1:
+                                    right()
+                                if correct == 0:
+                                    wrong()
+                        
+                        #medium mode with a number range of 1 to 100, and 4 guesses
+                        def medium(): #works the same as the easy function, just different number range and guess count
+                            counter = int(4)
+                            correct = 0
+                            num = int(random.randrange(1,100))
+                            print("Range is 1 to 100, you have",counter,"guesses left")
+                            while(counter >= 1):
+                                guess = int(input())
+                                if guess > num:
+                                    counter = counter - 1
+                                    print("Too High!", counter, "guesses left")
+                                elif guess < num:
+                                    counter = counter - 1
+                                    print("Too Low!", counter, "guesses left")
+                                elif guess == num:
+                                    counter = 0
+                                    correct = 1
+                            if counter == 0:
+                                if correct == 1:
+                                    right()
+                                if correct == 0:
+                                    wrong()
+                        #hard mode with a number range of 1 to 1000, and 3 guesses
+                        def hard(): #works the same as the easy function, just different number range and guess count
+                            counter = int(3)
+                            correct = 0
+                            num = int(random.randrange(1,1000))
+                            print("Range is 1 to 1000, you have",counter,"guesses left")
+                            while(counter >= 1):
+                                guess = int(input())
+                                if guess > num:
+                                    counter = counter - 1
+                                    print("Too High!", counter, "guesses left")
+                                elif guess < num:
+                                    counter = counter - 1
+                                    print("Too Low!", counter, "guesses left")
+                                elif guess == num:
+                                    counter = 0
+                                    correct = 1
+                            if counter == 0:
+                                if correct == 1:
+                                    right()
+                                if correct == 0:
+                                    wrong()
+                        
+                        def difficulty(): #allows the user to select the difficulty for this game
+                            print("Please select the difficulty: \n| Easy | Medium | Hard |") #asks the user to choose an difficulty
+                            dif = input()
+                            if dif == "easy": #initiate the easy function when the user types easy
+                                easy()
+                            elif dif == "medium": #initiate the medium function when the user types medium
+                                medium()
+                            elif dif == "hard": #initiate the hard function when the user types hard
+                                hard()
+                            else:
+                                print("Invalid option") #typing anything other tha three options prompts the selection again
+                                difficulty()
+                        
+                        difficulty()
+                    </code></pre>
+                </div>
+                <div class="dl-section">
+                    <a href="/CS_Portfolio/code_project/Random_num.py" download="">
+                        <button type="button" class="dl">- Download -</button>
+                    </a>
+                </div>
+            </section>
+
+            <section id="Student-info">
+                <h3>Student-Info-System</h3>
+                <div class="main-container">
+                    <div class="code-container">
+                        <pre><code class="language-python">
+#Student Information System
+#2024/10/08 By Sena Nishimura
+student_info = {
+    "1": {"name": "Jack", "mail": "jacky_chen@gmail.com", "course": "English", "grade": "D"},
+    "2": {"name": "Eric", "mail": "eric_can@gmail.com", "course": "French", "grade": "B"},
+    "3": {"name": "Oliver", "mail": "oli_oliver@gmail.com", "course": "Physics", "grade": "C"},
+}
+
+def Return(): #function used to return to the options menu after the user completes an operation
+    try:
+        home = int(input("Press '0' to return to options: "))
+        if home != 0:
+            print("Invalid option")
+            Return()
+        elif home == 0:
+            print("\nReturning to options...\n")
+            welcome()
+    except ValueError:
+        print("Invalid option. Please enter 0: ")
+        Return()
+
+def op1(): #function that prints out the information
+    print("------------------------------------------------------------")
+    #prints in a table format
+    print("{:<5} {:<10} {:<25} {:<10} {:<10}".format('ID#','Name', 'Mail', 'Class', 'Grade'))
+    for student, info in student_info.items():
+        print("{:<5} {:<10} {:<25} {:<10} {:<10}".format(student, info['name'], info['mail'], info['course'], info['grade']))
+    print("------------------------------------------------------------")
+    Return()
+
+def op2(): #function that lets the user add a new student information
+    print("--------------------")
+    student = input("Enter new student ID#: ")
+    if student in student_info: #checks if the student ID# is already taken
+        print("Student ID# already exists.")
+        op2()
+
+    name = input("Enter student's name: ")
+    mail = input("Enter student's mail: ")
+    course = input("Enter student's course: ")
+    grade = input("Enter student's grade: ")
+
+    student_info[student] = {"name": name, "mail": mail, "course": course, "grade": grade}
+    print("--------------------\nStudent added successfully.")
+    more = input("Would you like to add more students? y/n : ")
+    if more =="y":
+        op2()
+    elif more == "n":
+        Return()
+
+def op3(): #function that lets the user update the student info
+    print("-----------------------------")
+    student_id = input("Enter student ID# to update: ")
+    if student_id not in student_info:
+        print("Student ID# not found.")
+        op3()
+    name = input("Enter new name (leave blank to keep current): ")
+    mail = input("Enter new mail (leave blank to keep current): ")
+    course = input("Enter new course (leave blank to keep current): ")
+    grade = input("Enter new grade (leave blank to keep current): ")
+
+    if name:
+        student_info[student_id]['name'] = name
+    if mail:
+        student_info[student_id]['mail'] = mail
+    if course:
+        student_info[student_id]['course'] = course
+    if grade:
+        student_info[student_id]['grade'] = grade
+    print("----------------------------\nStudent updated successfully")
+    ask = input("Would like to update any other info? y/n : ")
+    if ask == "y":
+        op3()
+    elif ask == "n":
+        Return()
+
+def op4(): #function that lets the user remove a student info
+    print("----------------------------")
+    student_id = input("Enter student ID# to remove: ")
+    if student_id in student_info:
+        del student_info[student_id]
+        print("Student removed successfully.")
+        print("----------------------------")
+        ask = input("Would you like to delete more info? y/n :")
+        if ask == "y":
+            op4()
+        elif ask == "n":
+            Return()
+    else:
+        print("Student ID# not found.")
+        op4()
+
+def welcome(): #lets the user pick an option
+    print("Please select an option from below:\n1:View Info\n2:Add Info\n"
+          "3:Update Info\n4:Delete Info\n5:End Process\n-------------")
+    option = input("Your Option: ")
+    if option == "1":
+        op1()
+    elif option == "2":
+        op2()
+    elif option == "3":
+        op3()
+    elif option == "4":
+        op4()
+    elif option == "5":
+        print("Closing Program...")
+    else:
+        print("Invalid option\n")
+        welcome()
+
+print("Welcome to the student information menu")
+welcome()
+                        </code></pre>
+                    </div>
+                    
+                    <div class="gallery-container">
+                        <div class="discription">
+                            <p>The purpose for this project was to familiarize ourselves with 
+                                arrays and be able to add, remove, and update the contents 
+                                inside the array through user inputs</p>
+                        </div>
+                        <div class="gallery">
+                            <div><img src="img/array_1.png" alt=""></div>
+                            <div><img src="img/array_2.png" alt=""></div>
+                            <div><img src="img/array_3.png" alt=""></div>
+                            <div><img src="img/array_4.png" alt=""></div>
+                            <div><img src="img/array_5.png" alt=""></div>
+                            <div><img src="img/array_6.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="collapse">Full Code</button>
+                <div class="content">
+                    <pre><code class="language-python">
+#Student Information System
+#2024/10/08 By Sena Nishimura
+student_info = {
+    "1": {"name": "Jack", "mail": "jacky_chen@gmail.com", "course": "English", "grade": "D"},
+    "2": {"name": "Eric", "mail": "eric_can@gmail.com", "course": "French", "grade": "B"},
+    "3": {"name": "Oliver", "mail": "oli_oliver@gmail.com", "course": "Physics", "grade": "C"},
+}
+
+def Return(): #function used to return to the options menu after the user completes an operation
+    try:
+        home = int(input("Press '0' to return to options: "))
+        if home != 0:
+            print("Invalid option")
+            Return()
+        elif home == 0:
+            print("\nReturning to options...\n")
+            welcome()
+    except ValueError:
+        print("Invalid option. Please enter 0: ")
+        Return()
+
+def op1(): #function that prints out the information
+    print("------------------------------------------------------------")
+    #prints in a table format
+    print("{:<5} {:<10} {:<25} {:<10} {:<10}".format('ID#','Name', 'Mail', 'Class', 'Grade'))
+    for student, info in student_info.items():
+        print("{:<5} {:<10} {:<25} {:<10} {:<10}".format(student, info['name'], info['mail'], info['course'], info['grade']))
+    print("------------------------------------------------------------")
+    Return()
+
+def op2(): #function that lets the user add a new student information
+    print("--------------------")
+    student = input("Enter new student ID#: ")
+    if student in student_info: #checks if the student ID# is already taken
+        print("Student ID# already exists.")
+        op2()
+
+    name = input("Enter student's name: ")
+    mail = input("Enter student's mail: ")
+    course = input("Enter student's course: ")
+    grade = input("Enter student's grade: ")
+
+    student_info[student] = {"name": name, "mail": mail, "course": course, "grade": grade}
+    print("--------------------\nStudent added successfully.")
+    more = input("Would you like to add more students? y/n : ")
+    if more =="y":
+        op2()
+    elif more == "n":
+        Return()
+
+def op3(): #function that lets the user update the student info
+    print("-----------------------------")
+    student_id = input("Enter student ID# to update: ")
+    if student_id not in student_info:
+        print("Student ID# not found.")
+        op3()
+    name = input("Enter new name (leave blank to keep current): ")
+    mail = input("Enter new mail (leave blank to keep current): ")
+    course = input("Enter new course (leave blank to keep current): ")
+    grade = input("Enter new grade (leave blank to keep current): ")
+
+    if name:
+        student_info[student_id]['name'] = name
+    if mail:
+        student_info[student_id]['mail'] = mail
+    if course:
+        student_info[student_id]['course'] = course
+    if grade:
+        student_info[student_id]['grade'] = grade
+    print("----------------------------\nStudent updated successfully")
+    ask = input("Would like to update any other info? y/n : ")
+    if ask == "y":
+        op3()
+    elif ask == "n":
+        Return()
+
+def op4(): #function that lets the user remove a student info
+    print("----------------------------")
+    student_id = input("Enter student ID# to remove: ")
+    if student_id in student_info:
+        del student_info[student_id]
+        print("Student removed successfully.")
+        print("----------------------------")
+        ask = input("Would you like to delete more info? y/n :")
+        if ask == "y":
+            op4()
+        elif ask == "n":
+            Return()
+    else:
+        print("Student ID# not found.")
+        op4()
+
+def welcome(): #lets the user pick an option
+    print("Please select an option from below:\n1:View Info\n2:Add Info\n"
+          "3:Update Info\n4:Delete Info\n5:End Process\n-------------")
+    option = input("Your Option: ")
+    if option == "1":
+        op1()
+    elif option == "2":
+        op2()
+    elif option == "3":
+        op3()
+    elif option == "4":
+        op4()
+    elif option == "5":
+        print("Closing Program...")
+    else:
+        print("Invalid option\n")
+        welcome()
+
+print("Welcome to the student information menu")
+welcome()
+                    </code></pre>
+                </div>
+                <div class="dl-section">
+                    <a href="/CS_Portfolio/code_project/Array.py" download="">
+                        <button type="button" class="dl">- Download -</button>
+                    </a>
+                </div>
+            </section>
+
+            <section id="Recursion-turtle">
+                <h3>Recursion-Turtle</h3>
+                <div class="main-container">
+                    <div class="code-container">
+                        <pre><code class="language-python">
+#Recursion using turtle
+#2024/10/21 By Sena Nishimura
+import turtle
+import random
+
+def draw_triangle(t, size): #Draws an triangle with randamozied outline color
+    t.color(random.random(), random.random(), random.random())
+    t.begin_fill()
+    for _ in range(3):
+        t.forward(size)
+        t.left(120)
+
+def main(t, size, depth): #Recursion with the triangle rotating slightly and decrease in size
+    if depth == 0:
+        return
+    draw_triangle(t, size)
+    t.left(10)
+    main(t, size - 5, depth - 1)
+
+#Setups for the screen
+screen = turtle.Screen()
+screen.setup(width = 850, height = 850)
+
+tt = turtle.Turtle()
+tt.speed(0) 
+screen.bgcolor("black")
+
+main(tt, 400, 80)
+
+turtle.done()
+                        </code></pre>
+                    </div>
+                    
+                    <div class="gallery-container">
+                        <div class="discription">
+                            <p>The purpose for this project was to learn how recursions work 
+                                and use the knowledge to implement it using turtle, a graphic 
+                                module which lets you draw shapes using python</p>
+                        </div>
+                        <div class="gallery">
+                            <div><img src="img/recursion_1.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="collapse">Full Code</button>
+                <div class="content">
+                    <pre><code class="language-python">
+#Recursion using turtle
+#2024/10/21 By Sena Nishimura
+import turtle
+import random
+
+def draw_triangle(t, size): #Draws an triangle with randamozied outline color
+    t.color(random.random(), random.random(), random.random())
+    t.begin_fill()
+    for _ in range(3):
+        t.forward(size)
+        t.left(120)
+
+def main(t, size, depth): #Recursion with the triangle rotating slightly and decrease in size
+    if depth == 0:
+        return
+    draw_triangle(t, size)
+    t.left(10)
+    main(t, size - 5, depth - 1)
+
+#Setups for the screen
+screen = turtle.Screen()
+screen.setup(width = 850, height = 850)
+
+tt = turtle.Turtle()
+tt.speed(0) 
+screen.bgcolor("black")
+
+main(tt, 400, 80)
+
+turtle.done()
+                    </code></pre>
+                </div>
+                <div class="dl-section">
+                    <a href="/CS_Portfolio/code_project/Recursion_Turtle_SenaN.py" download="">
+                        <button type="button" class="dl">- Download -</button>
+                    </a>
+                </div>
+            </section>
+
+            <section id="Recursion-graphics">
+                <h3>Recursion-Graphics.py</h3>
+                <div class="main-container">
+                    <div class="code-container">
+                        <pre><code class="language-python">
+#Recursion using graphics.py
+#2024/10/21 By Sena Nishimura
+from graphics import *
+import random
+#Draws an circle on different position every time the function get's called
+def draw_circle(win, center, radius, range, x, y): 
+    if range == 0:
+        return
+    #Sets random colors for the circles
+    random_color = color_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    circle.setOutline(random_color)
+    circle.draw(win)
+    circle = Circle(center, radius)
+
+    center = Point(x,y)
+    
+    draw_circle(win, center, radius * 0.8, range - 1, x - 50, y)
+    draw_circle(win, center, radius * 0.8, range - 1, x + 50, y)
+    draw_circle(win, center, radius * 0.8, range - 1, x, y - 50)
+    draw_circle(win, center, radius * 0.8, range - 1, x, y + 50)
+    
+
+def main(): #Sets up an initial circle and the screen
+    win = GraphWin("", 800, 800)
+    win.setBackground("black")
+
+    x = 400
+    y = 400
+    center = Point(x, y)
+    radius = 200
+    range = 6
+
+    draw_circle(win, center, radius, range, 400, 400)
+
+    win.getMouse()
+    win.close()
+
+main()
+
+                        </code></pre>
+                    </div>
+                    
+                    <div class="gallery-container">
+                        <div class="discription">
+                            <p>The purpose for this project was to learn how recursions work 
+                                and use the knowledge to implement it using graphics.py, a graphic 
+                                module which lets you draw shapes using python</p>
+                        </div>
+                        <div class="gallery">
+                            <div><img src="img/recursion_2.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="collapse">Full Code</button>
+                <div class="content">
+                    <pre><code class="language-python">
+#Recursion using graphics.py
+#2024/10/21 By Sena Nishimura
+from graphics import *
+import random
+#Draws an circle on different position every time the function get's called
+def draw_circle(win, center, radius, range, x, y): 
+    if range == 0:
+        return
+    #Sets random colors for the circles
+    random_color = color_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    circle.setOutline(random_color)
+    circle.draw(win)
+    circle = Circle(center, radius)
+
+    center = Point(x,y)
+    
+    draw_circle(win, center, radius * 0.8, range - 1, x - 50, y)
+    draw_circle(win, center, radius * 0.8, range - 1, x + 50, y)
+    draw_circle(win, center, radius * 0.8, range - 1, x, y - 50)
+    draw_circle(win, center, radius * 0.8, range - 1, x, y + 50)
+    
+
+def main(): #Sets up an initial circle and the screen
+    win = GraphWin("", 800, 800)
+    win.setBackground("black")
+
+    x = 400
+    y = 400
+    center = Point(x, y)
+    radius = 200
+    range = 6
+
+    draw_circle(win, center, radius, range, 400, 400)
+
+    win.getMouse()
+    win.close()
+
+main()
+
+                    </code></pre>
+                </div>
+                <div class="dl-section">
+                    <a href="/CS_Portfolio/code_project/Recursion_Graphics_SenaN.py" download="">
+                        <button type="button" class="dl">- Download -</button>
+                    </a>
+                </div>
+            </section>
+
+            <!--<section id="blank">
+                <h3>More projects to be added</h3>
+            </section>-->
+        </section>
+        <!-- written -->
+        <section id="written" class="written">
+            <div class ="top-header">
+                <h1>Written Assignments</h1>
+            </div>
+            <div class="button-container">
+                <div class="parts">
+                    <h3>- Java / Python Comparison</h3>
+                    <a href="https://docs.google.com/document/d/1HqyCY1ULJCLBCO1qp4Mz2kNT67Eo8iT0X-0uo309tfU/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                <div class="parts">
+                    <h3>- Comparing Arrays</h3>
+                    <a href="https://docs.google.com/document/d/1qwdyNg-mWCp5rNNlMxx7w4_-ttIdOu7vXLJXybuIcHg/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                <div class="parts">
+                    <h3>- Computer Careers</h3>
+                    <a href="https://docs.google.com/document/d/1INonnIP2fAx3YsuMVcF6pFjPtMG57NlC8AF-qzqfTyA/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+            </div>
+            <div class="button-container">
+                <div class="parts">
+                    <h3>- Environmental Stewardship</h3>
+                    <a href="https://docs.google.com/document/d/139bM8nXan5dg-QDwVeW8-zuuSSR902pwWYlaKYgbRD4/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                <div class="parts">
+                    <h3>- Code of Ethics</h3>
+                    <a href="https://docs.google.com/document/d/1lNwd-Y9ETBLDCKNSVAtLWQnab8DsRjboSIkO2ANw940/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                
+                <div class="parts">
+                    <h3>- Theoretical CS Paper</h3>
+                    <a href="https://docs.google.com/document/d/1MI8XLtdVqrTpCvb0EMUQFgoOLSCCtZEayf9ug-gSSX0/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+            </div>
+            <div class = "button-container">   
+                <div class="parts">
+                    <h3>- Sorting Algorithm</h3>
+                    <a href="https://docs.google.com/document/d/1TW1nCiiVxcLbgT2k3mQWlLMOkHw5k_TbeRoSrtd3GFU/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1NqZ9Cn--yPwDXeJ93hGeTaw1bt6thiLjWVglHXZuwY8/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                <div class="parts">
+                    <h3>- SDLC Notes</h3>
+                    <a href="https://docs.google.com/document/d/17wFclA0FP_VCrSRZanTHPKH7O88I7Lv7rj4a24dbszk/edit?tab=t.0" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+                
+                <div class="parts">
+                    <h3>- Personal Ethics</h3>
+                    <a href="https://docs.google.com/document/d/1PG5Nu12Qn9RsL2w_NVK6rFwpFo3KkFx5XHwdKalDMho/edit?tab=t.0#heading=h.v4y244oaegna" target="_blank">
+                        <button type="button" class="doc">Check Document</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <script src="Projects_Script.js"></script>
+    </body>
+</html>
